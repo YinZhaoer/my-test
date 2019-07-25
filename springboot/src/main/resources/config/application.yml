@@ -1,0 +1,21 @@
+server:
+  port: 8080
+
+
+spring:
+  application:
+    name: application-springboot-login
+
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/mytest?useUnicode=true&characterEncoding=UTF-8&useSSL=false&&serverTimezone=GMT
+    username: zhaoyin
+    password: Zy999999
+  jpa:
+    show-sql: true
+
+
+
+
+jwt:
+  key: "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDMbk68EOnPUFpj89H2SszrTGqe351IwWj956dqhakJJDGQK"
