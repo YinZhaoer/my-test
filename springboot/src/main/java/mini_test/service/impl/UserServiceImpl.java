@@ -52,7 +52,7 @@ public class UserServiceImpl implements UserService {
         if (Integer.valueOf((Integer) jsonObject.get("code"))==200) {
             if (userInfoRepository.existsByPhoneNumber(phoneNumber)) {
                 UserInfoEntity userInfoEntity = userInfoRepository.findByPhoneNumber(phoneNumber);
-                String jws = jwtUtil.createJWT(userInfoEntity.getUserId(),"sss",1000000);
+                String jws = jwtUtil.createJWT(userInfoEntity.getUserId(),"sss",1000000000);
                 dataMap.put("jws", jws);
                 dataMap.put("userInfo", userInfoEntity);
                 resultMsg.success("登陆成功");
