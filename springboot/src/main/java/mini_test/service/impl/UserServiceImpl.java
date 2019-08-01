@@ -5,6 +5,7 @@ import com.alibaba.fastjson.JSONObject;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.Jwts;
+import mini_test.util.CookieUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import mini_test.model.entity.UserInfoEntity;
@@ -14,7 +15,10 @@ import mini_test.service.UserService;
 import mini_test.util.JwtUtil;
 import mini_test.util.verification_code.VerificationCodeUtil;
 
+
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -46,7 +50,7 @@ public class UserServiceImpl implements UserService {
     private ResultMsg resultMsg = new ResultMsg();
 
 
-    public ResultMsg loginWithoutToken(String phoneNumber, String verificationCode, HttpServletRequest request) throws Exception {
+    public ResultMsg loginWithoutToken(String phoneNumber, String verificationCode, HttpServletRequest request,HttpServletResponse response) throws Exception {
         String verificateionResponse = verificationCodeUtil.verifyCode(phoneNumber, verificationCode);
         JSONObject jsonObject = JSON.parseObject(verificateionResponse);
         if (Integer.valueOf((Integer) jsonObject.get("code"))==200) {
@@ -55,6 +59,9 @@ public class UserServiceImpl implements UserService {
                 String jws = jwtUtil.createJWT(userInfoEntity.getUserId(),"sss",1000000000);
                 dataMap.put("jws", jws);
                 dataMap.put("userInfo", userInfoEntity);
+//                CookieUtil.removeAllCookies(request,response);
+//                CookieUtil.addCookie(response,"jws",jws,-1);
+//                CookieUtil.addCookie(response,"jwr","asdasdasdas",-1);
                 resultMsg.success("登陆成功");
                 resultMsg.setData(dataMap);
             } else {

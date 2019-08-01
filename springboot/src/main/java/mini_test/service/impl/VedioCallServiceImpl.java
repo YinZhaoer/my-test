@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
  * Date: 2019/7/26
  * Time: 11:20
  * Created with IntelliJ IDEA
- * Description:
+ * Description: 获取声网token
  */
 @Component
 public class VedioCallServiceImpl implements VedioCallService {

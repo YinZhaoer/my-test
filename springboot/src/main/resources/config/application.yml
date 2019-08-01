@@ -1,8 +1,10 @@
 server:
-  port: 8080
+  port: 8860
 
 
 spring:
+  main:
+    allow-bean-definition-overriding: true #当遇到同样名字的时候，是否允许覆盖注册(The bean 'hiddenHttpMethodFilter', defined in class path resource [org/springframework/boot/autoconfigure/web/servlet/WebMvcAutoConfiguration.class], could not be registered. A bean with that name has already been defined in class path resource [org/springframework/cloud/gateway/config/GatewayAutoConfiguration.class] and overriding is disabled)
   application:
     name: application-springboot-login
 
@@ -13,6 +15,14 @@ spring:
     password: Zy999999
   jpa:
     show-sql: true
+
+#  cloud:
+#    gateway:
+#      routes:
+#        - id: neo_route
+#          uri: http://www.ityouknow.com
+#          predicates:
+#            - Path=/spring-cloud
 
 
 

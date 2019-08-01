@@ -7,6 +7,7 @@ import mini_test.service.UserService;
 import mini_test.util.ResultMsg;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 
 /**
@@ -29,8 +30,8 @@ public class UserController {
 
 
     @RequestMapping("/login/withoutToken")
-    public ResultMsg loginWithouttoken(@RequestParam String phoneNumber, @RequestParam String verificationCode, HttpServletRequest request) throws Exception {
-        return userService.loginWithoutToken(phoneNumber, verificationCode, request);
+    public ResultMsg loginWithouttoken(@RequestParam String phoneNumber, @RequestParam String verificationCode, HttpServletRequest request,HttpServletResponse response) throws Exception {
+        return userService.loginWithoutToken(phoneNumber, verificationCode, request,response);
     }
 
     @RequestMapping("/login/getInfo")
