@@ -10,7 +10,7 @@ spring:
 
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://:3306/mytest?useUnicode=true&characterEncoding=UTF-8&useSSL=false&&serverTimezone=GMT
+    url: jdbc:mysql://127.0.0.1:3306/mytest?useUnicode=true&characterEncoding=UTF-8&useSSL=false&&serverTimezone=GMT
     username: zhaoyin
     password: Zy999999
   jpa:
@@ -28,3 +28,50 @@ spring:
 
 jwt:
   issuer: "babao"
+
+ffmpeg:
+  #  temp-file-path: D:/
+  temp-file-path: /mini9/music/temp/
+  #  temp-file-path: /Users/zhouhaihua/Desktop/mini9/music/temp/
+  command-path: ffmpeg
+  video-extname: .mp4
+  threads: 3
+  # 暂弃用
+  fps: 1
+  #每张图片持续播放秒数
+  duration: 4
+  #    1920*1080分辨率的视频，码率应该在8M以上。
+  #    1080*720的分辨率，应该在5M左右
+  #    720*576分辨率，应该在3M左右
+  #    640*480分辨率，应该在1.5M左右
+  #    320*240的分辨率，应该在600K左右
+  bitrate: 1500000
+  #单位kb
+  img-compress-des-size: 600
+  compress-accuracy: 0.6
+  compress-width: 640
+  compress-height: 480
+
+# redis start
+redis:
+  #本地装一个,地址通用
+  host: 127.0.0.1
+  port: 6379
+  timeout: 3000
+  password:
+  # 最大活动对象数
+  maxTotal: 1000
+  #最大能够保持idel状态的对象数
+  maxIdle: 100
+  #最小能够保持idel状态的对象数
+  minIdle: 50
+  #当池内没有返回对象时，最大等待时间
+  maxWaitMillis: 10000
+  #当调用borrow Object方法时，是否进行有效性检查
+  testOnBorrow: true
+  #当调用return Object方法时，是否进行有效性检查
+  testOnReturn: true
+  #“空闲链接”检测线程，检测的周期，毫秒数。如果为负值，表示不运行“检测线程”。默认为-1.
+  timeBetweenEvictionRunsMillis: 30000
+
+# redis end

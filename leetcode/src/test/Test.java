@@ -9,9 +9,10 @@ import java.util.Arrays;
  * @date 2019-06-24 11:36
  */
 public class Test {
+
+    public final static String EN_PLUG_TYPE_CACHE = "p_t_c:en:%s";
     public static void main(String[] args) {
-        String scrollId=null;
-//        Arrays.sort(int[]{1,2.3});
-        System.out.println(scrollId);
+
+        System.out.println( String.format(EN_PLUG_TYPE_CACHE, "ssss"));
     }
 }

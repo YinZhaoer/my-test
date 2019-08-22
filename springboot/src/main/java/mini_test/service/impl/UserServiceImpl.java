@@ -50,18 +50,19 @@ public class UserServiceImpl implements UserService {
     private ResultMsg resultMsg = new ResultMsg();
 
 
-    public ResultMsg loginWithoutToken(String phoneNumber, String verificationCode, HttpServletRequest request,HttpServletResponse response) throws Exception {
+    public ResultMsg loginWithoutToken(String phoneNumber, String verificationCode, HttpServletRequest request, HttpServletResponse response) throws Exception {
         String verificateionResponse = verificationCodeUtil.verifyCode(phoneNumber, verificationCode);
         JSONObject jsonObject = JSON.parseObject(verificateionResponse);
-        if (Integer.valueOf((Integer) jsonObject.get("code"))==200) {
+        if (Integer.valueOf((Integer) jsonObject.get("code")) == 200) {
             if (userInfoRepository.existsByPhoneNumber(phoneNumber)) {
                 UserInfoEntity userInfoEntity = userInfoRepository.findByPhoneNumber(phoneNumber);
-                String jws = jwtUtil.createJWT(userInfoEntity.getUserId(),"sss",1000000000);
+                String jws = jwtUtil.createJWT(userInfoEntity.getUserId(), "sss", 1000000000);
                 dataMap.put("jws", jws);
                 dataMap.put("userInfo", userInfoEntity);
-//                CookieUtil.removeAllCookies(request,response);
-//                CookieUtil.addCookie(response,"jws",jws,-1);
-//                CookieUtil.addCookie(response,"jwr","asdasdasdas",-1);
+//                CookieUtil.removeAllCookies(request, response);
+//                CookieUtil.addCookie(response, "jws", jws, -1);
+//                CookieUtil.addCookie(response, "jwr", "asdasdasdas", -1);
+                CookieUtil.removeCookie(request,response,"jwr");
                 resultMsg.success("登陆成功");
                 resultMsg.setData(dataMap);
             } else {
