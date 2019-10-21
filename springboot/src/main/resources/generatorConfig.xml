@@ -18,7 +18,7 @@
         </javaTypeResolver>
 
         <!--指定entity生成的位置-->
-        <javaModelGenerator targetPackage="cmini_test.model.entity" targetProject="./src/main/java">
+        <javaModelGenerator targetPackage="mini_test.model.entity" targetProject="./src/main/java">
             <property name="enableSubPackages" value="true" />
             <property name="trimStrings" value="true" />
         </javaModelGenerator>
@@ -29,7 +29,7 @@
         </sqlMapGenerator>
 
         <!--指定DaoMapper生成的位置 mapper.java-->
-        <javaClientGenerator type="XMLMAPPER" targetPackage="cmini_test.model.entity" targetProject="./src/main/java">
+        <javaClientGenerator type="XMLMAPPER" targetPackage="mini_test.model.entity" targetProject="./src/main/java">
             <property name="enableSubPackages" value="true" />
         </javaClientGenerator>
 
@@ -40,6 +40,6 @@
         <!--<table tableName="specialty" domainObjectName="Specialty"></table>-->
         <!--<table tableName="student" domainObjectName="Student"></table>-->
         <!--<table tableName="teacher" domainObjectName="Teacher"></table>-->
-        <table tableName="open_api_info" domainObjectName="OpenApiDo"></table>
+        <table tableName="open_api_info" domainObjectName="OpenApiDetailDo"></table>
     </context>
 </generatorConfiguration>

@@ -10,9 +10,24 @@ import java.util.Arrays;
  */
 public class Test {
 
-    public final static String EN_PLUG_TYPE_CACHE = "p_t_c:en:%s";
     public static void main(String[] args) {
+        String s="  ";
+        System.out.println(s.length());
 
-        System.out.println( String.format(EN_PLUG_TYPE_CACHE, "ssss"));
     }
+    public static String test(String s){
+        if(s==null){
+            return null;
+        }
+        try {
+            System.out.println(s);
+            return s;
+        }catch (Exception e){
+            System.out.println("eeeee");
+        }
+        return null;
+    }
+
 }
+
+

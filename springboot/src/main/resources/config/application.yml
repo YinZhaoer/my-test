@@ -6,7 +6,7 @@ spring:
   main:
     allow-bean-definition-overriding: true #当遇到同样名字的时候，是否允许覆盖注册(The bean 'hiddenHttpMethodFilter', defined in class path resource [org/springframework/boot/autoconfigure/web/servlet/WebMvcAutoConfiguration.class], could not be registered. A bean with that name has already been defined in class path resource [org/springframework/cloud/gateway/config/GatewayAutoConfiguration.class] and overriding is disabled)
   application:
-    name: application-springboot-login
+    name: zy-elastic-job
 
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
@@ -16,41 +16,8 @@ spring:
   jpa:
     show-sql: true
 
-#  cloud:
-#    gateway:
-#      routes:
-#        - id: neo_route
-#          uri: http://www.ityouknow.com
-#          predicates:
-#            - Path=/spring-cloud
-
-
-
-jwt:
-  issuer: "babao"
-
-ffmpeg:
-  #  temp-file-path: D:/
-  temp-file-path: /mini9/music/temp/
-  #  temp-file-path: /Users/zhouhaihua/Desktop/mini9/music/temp/
-  command-path: ffmpeg
-  video-extname: .mp4
-  threads: 3
-  # 暂弃用
-  fps: 1
-  #每张图片持续播放秒数
-  duration: 4
-  #    1920*1080分辨率的视频，码率应该在8M以上。
-  #    1080*720的分辨率，应该在5M左右
-  #    720*576分辨率，应该在3M左右
-  #    640*480分辨率，应该在1.5M左右
-  #    320*240的分辨率，应该在600K左右
-  bitrate: 1500000
-  #单位kb
-  img-compress-des-size: 600
-  compress-accuracy: 0.6
-  compress-width: 640
-  compress-height: 480
+regCenter:
+  serverList: localhost:2181
 
 # redis start
 redis:

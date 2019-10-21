@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mini_test.model.entity.OpenApiDetailDoMapper">
+  <resultMap id="BaseResultMap" type="mini_test.model.entity.OpenApiDetailDo">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="uid" jdbcType="VARCHAR" property="uid" />
+    <result column="path" jdbcType="VARCHAR" property="path" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="access_mode" jdbcType="INTEGER" property="accessMode" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="qps_max" jdbcType="INTEGER" property="qpsMax" />
+    <result column="req_freq_min_ms" jdbcType="INTEGER" property="reqFreqMinMs" />
+    <result column="db_create_time" jdbcType="TIMESTAMP" property="dbCreateTime" />
+    <result column="db_update_time" jdbcType="TIMESTAMP" property="dbUpdateTime" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, uid, path, name, access_mode, status, qps_max, req_freq_min_ms, db_create_time, 
+    db_update_time
+  </sql>
+  <select id="selectByExample" parameterType="mini_test.model.entity.OpenApiDetailDoExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from open_api_info
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from open_api_info
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from open_api_info
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="mini_test.model.entity.OpenApiDetailDoExample">
+    delete from open_api_info
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="mini_test.model.entity.OpenApiDetailDo">
+    insert into open_api_info (id, uid, path, 
+      name, access_mode, status, 
+      qps_max, req_freq_min_ms, db_create_time, 
+      db_update_time)
+    values (#{id,jdbcType=BIGINT}, #{uid,jdbcType=VARCHAR}, #{path,jdbcType=VARCHAR}, 
+      #{name,jdbcType=VARCHAR}, #{accessMode,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, 
+      #{qpsMax,jdbcType=INTEGER}, #{reqFreqMinMs,jdbcType=INTEGER}, #{dbCreateTime,jdbcType=TIMESTAMP}, 
+      #{dbUpdateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="mini_test.model.entity.OpenApiDetailDo">
+    insert into open_api_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="uid != null">
+        uid,
+      </if>
+      <if test="path != null">
+        path,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="accessMode != null">
+        access_mode,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="qpsMax != null">
+        qps_max,
+      </if>
+      <if test="reqFreqMinMs != null">
+        req_freq_min_ms,
+      </if>
+      <if test="dbCreateTime != null">
+        db_create_time,
+      </if>
+      <if test="dbUpdateTime != null">
+        db_update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="uid != null">
+        #{uid,jdbcType=VARCHAR},
+      </if>
+      <if test="path != null">
+        #{path,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="accessMode != null">
+        #{accessMode,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="qpsMax != null">
+        #{qpsMax,jdbcType=INTEGER},
+      </if>
+      <if test="reqFreqMinMs != null">
+        #{reqFreqMinMs,jdbcType=INTEGER},
+      </if>
+      <if test="dbCreateTime != null">
+        #{dbCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dbUpdateTime != null">
+        #{dbUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="mini_test.model.entity.OpenApiDetailDoExample" resultType="java.lang.Long">
+    select count(*) from open_api_info
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update open_api_info
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.uid != null">
+        uid = #{record.uid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.path != null">
+        path = #{record.path,jdbcType=VARCHAR},
+      </if>
+      <if test="record.name != null">
+        name = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.accessMode != null">
+        access_mode = #{record.accessMode,jdbcType=INTEGER},
+      </if>
+      <if test="record.status != null">
+        status = #{record.status,jdbcType=INTEGER},
+      </if>
+      <if test="record.qpsMax != null">
+        qps_max = #{record.qpsMax,jdbcType=INTEGER},
+      </if>
+      <if test="record.reqFreqMinMs != null">
+        req_freq_min_ms = #{record.reqFreqMinMs,jdbcType=INTEGER},
+      </if>
+      <if test="record.dbCreateTime != null">
+        db_create_time = #{record.dbCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.dbUpdateTime != null">
+        db_update_time = #{record.dbUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update open_api_info
+    set id = #{record.id,jdbcType=BIGINT},
+      uid = #{record.uid,jdbcType=VARCHAR},
+      path = #{record.path,jdbcType=VARCHAR},
+      name = #{record.name,jdbcType=VARCHAR},
+      access_mode = #{record.accessMode,jdbcType=INTEGER},
+      status = #{record.status,jdbcType=INTEGER},
+      qps_max = #{record.qpsMax,jdbcType=INTEGER},
+      req_freq_min_ms = #{record.reqFreqMinMs,jdbcType=INTEGER},
+      db_create_time = #{record.dbCreateTime,jdbcType=TIMESTAMP},
+      db_update_time = #{record.dbUpdateTime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="mini_test.model.entity.OpenApiDetailDo">
+    update open_api_info
+    <set>
+      <if test="uid != null">
+        uid = #{uid,jdbcType=VARCHAR},
+      </if>
+      <if test="path != null">
+        path = #{path,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="accessMode != null">
+        access_mode = #{accessMode,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="qpsMax != null">
+        qps_max = #{qpsMax,jdbcType=INTEGER},
+      </if>
+      <if test="reqFreqMinMs != null">
+        req_freq_min_ms = #{reqFreqMinMs,jdbcType=INTEGER},
+      </if>
+      <if test="dbCreateTime != null">
+        db_create_time = #{dbCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dbUpdateTime != null">
+        db_update_time = #{dbUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="mini_test.model.entity.OpenApiDetailDo">
+    update open_api_info
+    set uid = #{uid,jdbcType=VARCHAR},
+      path = #{path,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      access_mode = #{accessMode,jdbcType=INTEGER},
+      status = #{status,jdbcType=INTEGER},
+      qps_max = #{qpsMax,jdbcType=INTEGER},
+      req_freq_min_ms = #{reqFreqMinMs,jdbcType=INTEGER},
+      db_create_time = #{dbCreateTime,jdbcType=TIMESTAMP},
+      db_update_time = #{dbUpdateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
