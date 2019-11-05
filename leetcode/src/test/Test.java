@@ -10,8 +10,6 @@ import java.util.Arrays;
  */
 public class Test {
     public static void main(String[] args) {
-        String scrollId=null;
-//        Arrays.sort(int[]{1,2.3});
-        System.out.println(scrollId);
+        System.out.println(String.format("appkeyInfo为%s，old为%s","kkkk","wwww"));
     }
 }
